@@ -17,9 +17,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Marked in Red — MMIW Awareness Map",
+  title: "Marked in Red — MMIWG2S Awareness Map",
   description:
-    "An interactive map tracking Missing and Murdered Indigenous Women (MMIW) cases across the United States and Canada, honoring those we have lost and those still missing.",
+    "An interactive awareness map for understanding Missing and Murdered Indigenous Women, Girls, and Two-Spirit (MMIWG2S) cases across the United States and Canada, honoring those we have lost and those still missing.",
 };
 
 export default function RootLayout({
