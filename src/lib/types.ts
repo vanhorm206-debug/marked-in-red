@@ -4,6 +4,8 @@ export type EditStatus = 'live_unverified' | 'approved' | 'rejected' | 'auto_fla
 export type TrustLevel = 'new' | 'trusted' | 'moderator' | 'admin'
 export type TributeStatus = 'pending' | 'approved' | 'rejected'
 export type SubscriptionType = 'area_alerts' | 'weekly_digest' | 'both'
+export type CaseSortField = 'name' | 'date_missing'
+export type SortDirection = 'asc' | 'desc'
 
 export interface Case {
   id: string
@@ -89,4 +91,11 @@ export interface MapFilters {
   stateProvince: string | null
   tribalNation: string | null
   ageRange: [number, number] | null
+}
+
+export interface CaseFilters extends MapFilters {
+  query: string
+  countries: Country[]
+  sortField: CaseSortField
+  sortDirection: SortDirection
 }

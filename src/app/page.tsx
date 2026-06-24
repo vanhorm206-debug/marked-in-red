@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import SampleDataBanner from '@/components/layout/sample-data-banner'
 
 export default function Home() {
   return (
@@ -24,10 +25,7 @@ export default function Home() {
           >
             Open the map
           </Link>
-          <p className="border-l-4 border-primary bg-surface-container-low px-4 py-3 text-sm font-semibold text-on-surface">
-            Demonstration build. The points shown are sample data, not real
-            cases.
-          </p>
+          <SampleDataBanner />
         </div>
 
         <div className="grid gap-4 border-t border-outline-variant/50 pt-8 text-sm text-on-surface-variant md:grid-cols-3">

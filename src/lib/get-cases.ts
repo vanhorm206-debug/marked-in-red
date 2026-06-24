@@ -27,3 +27,26 @@ export async function getCases(): Promise<Case[]> {
     return sampleCases
   }
 }
+
+export async function getCaseById(id: string): Promise<Case | null> {
+  if (!hasSupabaseConfig()) {
+    return sampleCases.find((item) => item.id === id) ?? null
+  }
+
+  try {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('cases')
+      .select('*')
+      .eq('id', id)
+      .maybeSingle()
+
+    if (error || !data) {
+      return sampleCases.find((item) => item.id === id) ?? null
+    }
+
+    return data as Case
+  } catch {
+    return sampleCases.find((item) => item.id === id) ?? null
+  }
+}

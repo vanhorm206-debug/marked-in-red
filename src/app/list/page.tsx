@@ -1,8 +1,15 @@
-import CasesMap from '@/components/map/cases-map'
+import type { Metadata } from 'next'
+import CasesListTable from '@/components/cases/cases-list-table'
 import SampleDataBanner from '@/components/layout/sample-data-banner'
 import { getCases } from '@/lib/get-cases'
 
-export default async function MapPage() {
+export const metadata: Metadata = {
+  title: 'Cases — Marked in Red',
+  description:
+    'Browse fictional sample case records in the Marked in Red demonstration build.',
+}
+
+export default async function ListPage() {
   const cases = await getCases()
 
   return (
@@ -12,18 +19,18 @@ export default async function MapPage() {
 
         <div className="flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase text-primary">
-            Awareness Map
+            Sample Case List
           </p>
           <h1 className="font-display text-4xl font-extrabold text-on-surface md:text-5xl">
-            Marked in Red
+            Cases
           </h1>
           <p className="max-w-3xl text-base leading-7 text-on-surface-variant">
-            A working demo map for understanding how MMIWG2S case information
-            could be explored across the United States and Canada.
+            Browse all fictional demonstration records, including records that
+            may not have coordinates for map display.
           </p>
         </div>
 
-        <CasesMap cases={cases} />
+        <CasesListTable cases={cases} />
       </section>
     </div>
   )
