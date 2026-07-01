@@ -1,4 +1,4 @@
-import CasesMap from '@/components/map/cases-map'
+import MapExplorer from '@/components/map/map-explorer'
 import SampleDataBanner from '@/components/layout/sample-data-banner'
 import { getCases } from '@/lib/get-cases'
 
@@ -23,7 +23,7 @@ export default async function MapPage() {
           </p>
         </div>
 
-        <CasesMap cases={cases} />
+        <MapExplorer cases={cases} />
       </section>
     </div>
   )

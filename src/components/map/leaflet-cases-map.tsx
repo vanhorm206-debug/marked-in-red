@@ -2,6 +2,7 @@
 
 import 'leaflet/dist/leaflet.css'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type { GeoJsonObject } from 'geojson'
 import {
@@ -62,7 +63,6 @@ export default function LeafletCasesMap({ cases }: { cases: Case[] }) {
 
   useEffect(() => {
     if (!showBoundaries) {
-      setIsLoadingBoundaries(false)
       return
     }
 
@@ -148,6 +148,8 @@ export default function LeafletCasesMap({ cases }: { cases: Case[] }) {
 
       if (nextValue) {
         setLoadAttempt((currentAttempt) => currentAttempt + 1)
+      } else {
+        setIsLoadingBoundaries(false)
       }
 
       return nextValue
@@ -231,6 +233,29 @@ export default function LeafletCasesMap({ cases }: { cases: Case[] }) {
           </button>
         )}
       </div>
+      <div className="absolute bottom-6 left-3 z-[1000] rounded-md border border-outline-variant/60 bg-surface/95 px-3 py-2 shadow-sm backdrop-blur">
+        <p className="text-xs font-semibold text-on-surface">Case status</p>
+        <ul className="mt-1.5 space-y-1">
+          {(Object.keys(STATUS_LABELS) as Array<keyof typeof STATUS_LABELS>).map(
+            (status) => (
+              <li
+                key={status}
+                className="flex items-center gap-2 text-xs text-on-surface"
+              >
+                <span
+                  className="h-2.5 w-2.5 rounded-full border-2"
+                  style={{
+                    backgroundColor: STATUS_COLORS[status],
+                    borderColor: STATUS_COLORS[status],
+                  }}
+                  aria-hidden="true"
+                />
+                {STATUS_LABELS[status]}
+              </li>
+            )
+          )}
+        </ul>
+      </div>
       <MapContainer
         center={DEFAULT_MAP_CENTER}
         zoom={DEFAULT_MAP_ZOOM}
@@ -272,6 +297,14 @@ export default function LeafletCasesMap({ cases }: { cases: Case[] }) {
                   {item.location_name}, {item.state_province}
                 </p>
                 <p className="max-w-64">{item.summary}</p>
+                <p>
+                  <Link
+                    href={`/case/${item.id}`}
+                    className="font-semibold text-primary underline-offset-4 hover:underline focus:underline"
+                  >
+                    View case profile
+                  </Link>
+                </p>
               </div>
             </Popup>
           </CircleMarker>

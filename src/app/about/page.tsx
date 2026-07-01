@@ -45,6 +45,106 @@ export default function AboutPage() {
             page.
           </p>
         </div>
+
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl font-bold text-on-surface">
+            How to read the map
+          </h2>
+          <div className="space-y-4 text-base leading-8 text-on-surface-variant">
+            <p>Each point on the map is one case record, colored by status:</p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <strong className="text-on-surface">Missing</strong>: the
+                person has not been located.
+              </li>
+              <li>
+                <strong className="text-on-surface">Murdered</strong>: the
+                source record identifies the case as a homicide.
+              </li>
+              <li>
+                <strong className="text-on-surface">Found</strong>: the person
+                has been located; source records vary in what that means.
+              </li>
+              <li>
+                <strong className="text-on-surface">Resolved</strong>: the case
+                is closed or otherwise resolved in the source record.
+              </li>
+            </ul>
+            <p>
+              These categories are provisional for the demonstration build.
+              When real records are added, status definitions will follow the
+              source databases and the community guidance this project is
+              seeking, and each case page will name its sources.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl font-bold text-on-surface">
+            Data sources & attribution
+          </h2>
+          <div className="space-y-4 text-base leading-8 text-on-surface-variant">
+            <p>
+              Case points are currently fictional sample records, clearly
+              labeled as such throughout the site.
+            </p>
+            <p>
+              The optional reservation/reserve boundary overlay uses two public
+              datasets: United States boundaries come from the{' '}
+              <a
+                href="https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html"
+                className="font-semibold text-primary underline-offset-4 hover:underline focus:underline"
+              >
+                US Census Bureau 2025 cartographic boundary files
+              </a>{' '}
+              (American Indian / Alaska Native / Native Hawaiian areas, public
+              domain), and Canadian boundaries come from Natural Resources
+              Canada&apos;s Aboriginal Lands of Canada Legislative Boundaries
+              dataset, used under the{' '}
+              <a
+                href="https://open.canada.ca/en/open-government-licence-canada"
+                className="font-semibold text-primary underline-offset-4 hover:underline focus:underline"
+              >
+                Open Government Licence - Canada
+              </a>
+              . Both layers are simplified for fast loading on the web.
+            </p>
+            <p>
+              The basemap is &copy; OpenStreetMap contributors and &copy;
+              CARTO.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="font-display text-2xl font-bold text-on-surface">
+            Limitations
+          </h2>
+          <div className="space-y-4 text-base leading-8 text-on-surface-variant">
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                Every case point shown today is fictional. No real records are
+                displayed until sourcing, attribution, and community review are
+                in place.
+              </li>
+              <li>
+                The boundary overlay shows current administrative and
+                statistical boundaries only. It does not represent ancestral or
+                traditional territories, and it is not a legal land
+                description.
+              </li>
+              <li>
+                Boundary geometry is intentionally simplified for performance
+                and should not be used for precise location work.
+              </li>
+              <li>
+                Real-world MMIWG2S data undercounts the crisis. Reporting gaps,
+                racial misclassification, and jurisdictional complexity mean
+                any map is a partial view, never the full story.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   )
