@@ -31,7 +31,7 @@ const BOUNDARY_SOURCES = [
   },
   {
     id: 'ca',
-    url: '/data/reservation-boundaries-ca-2025.geojson',
+    url: '/data/reservation-boundaries-ca-2026.geojson',
   },
 ] as const
 

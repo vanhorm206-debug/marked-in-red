@@ -37,11 +37,14 @@ const sources = {
 
 const outputs = {
   us: resolve(outputDir, "reservation-boundaries-us-2025.geojson"),
-  ca: resolve(outputDir, "reservation-boundaries-ca-2025.geojson"),
+  // Filename carries the real NRCan vintage AND acts as the cache-buster:
+  // /data/*.geojson ships with immutable cache headers, so any content
+  // change MUST change the filename.
+  ca: resolve(outputDir, "reservation-boundaries-ca-2026.geojson"),
 };
 
 const tempOutputs = {
-  ca: resolve(outputDir, "reservation-boundaries-ca-2025.tmp.geojson"),
+  ca: resolve(outputDir, "reservation-boundaries-ca-2026.tmp.geojson"),
 };
 
 for (const [label, path] of Object.entries(sources)) {
@@ -110,7 +113,7 @@ runMapshaper("Canada build", [
   "wgs84",
   "-simplify",
   "visvalingam",
-  "1%",
+  "5%",
   "keep-shapes",
   "-each",
   'name=NAME1; source_id=ALCODE; source_dataset="Natural Resources Canada Aboriginal Lands of Canada Legislative Boundaries"; source_vintage="2026-06-01 / AL_TA_CA_2_185"; country="CA";',
