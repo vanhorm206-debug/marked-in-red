@@ -24,6 +24,7 @@
 # misc
 .DS_Store
 *.pem
+/scripts/.boundary-src/
 
 # debug
 npm-debug.log*
